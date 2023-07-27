@@ -1,7 +1,12 @@
+// "use client"
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Plus_Jakarta_Sans } from 'next/font/google'
+import Head from './head'
+const pjs = Plus_Jakarta_Sans({ subsets: ['latin'] })
+import { FooterBar, HeaderBar, LoadingBox } from './components'
+import { getProfile } from '@/utils/get-profile'
+import { cookies } from 'next/headers'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,9 +14,27 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const cookiesList = cookies()
+  const hasCookie = cookiesList.has('user')
+  let user;
+  let image;
+  if (hasCookie) {
+    user = cookiesList.get('user').value
+    image = cookiesList.get('image').value
+  } else {
+    user = "login bray"
+    image = "./icon/dash.svg"
+  }
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head />
+      <body className={pjs.className}>
+        <HeaderBar user={user} image={image} />
+        <Suspense fallback={<LoadingBox />}>
+          {children}
+        </Suspense>
+        <FooterBar />
+      </body>
     </html>
   )
 }
