@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { handleChangeFromAddJob, handleSubmitFromAddJob } from "@/utils/form-add-job";
@@ -42,7 +41,7 @@ export default function FormJobVacancy() {
                                 <label className={styles.imagelabel}>
                                     Image URL Company
                                 </label>
-                                <input className={styles.imageinput} type="text" onChange={handleChange} name="company_image_url" value={input.company_image_url} />
+                                <input className={styles.imageinput} type="text" onChange={handleChange} name="company_image_url" value={input.company_image_url} required />
                             </div>
                         </div>
                         <div className={styles.colContainer}>
@@ -52,19 +51,19 @@ export default function FormJobVacancy() {
                                     <label className={styles.namelabel}>
                                         Company Name
                                     </label>
-                                    <input className={styles.nameinput} type="text" onChange={handleChange} name="company_name" value={input.company_name} />
+                                    <input className={styles.nameinput} type="text" onChange={handleChange} name="company_name" value={input.company_name} required />
                                 </div>
                                 <div className={styles.salmin}>
                                     <label className={styles.salminlabel}>
                                         Salary Minimal
                                     </label>
-                                    <input className={styles.salmininput} type="number" onChange={handleChange} name="salary_min" value={input.salary_min} />
+                                    <input className={styles.salmininput} type="number" onChange={handleChange} name="salary_min" value={input.salary_min} required />
                                 </div>
                                 <div className={styles.jobtype}>
                                     <label className={styles.typelabel}>
                                         Job Type
                                     </label>
-                                    <select className={styles.typeinput} name="job_type" id="type" onChange={handleChange} value={input.job_type}>
+                                    <select className={styles.typeinput} name="job_tenure" id="tenure" onChange={handleChange} value={input.job_tenure} required>
                                         <option value="Full-time">Full-time</option>
                                         <option value="Part-time">Part-time</option>
                                         <option value="Contract">Contract</option>
@@ -75,7 +74,7 @@ export default function FormJobVacancy() {
                                     <label className={styles.desclabel}>
                                         Job Description
                                     </label>
-                                    <textarea className={styles.descinput} type="text" onChange={handleChange} name="job_description" value={input.job_description} ></textarea>
+                                    <textarea className={styles.descinput} type="text" onChange={handleChange} name="job_description" value={input.job_description} required></textarea>
                                 </div>
                             </div>
                             <div className={styles.col2}>
@@ -83,19 +82,19 @@ export default function FormJobVacancy() {
                                     <label className={styles.citylabel}>
                                         Company City
                                     </label>
-                                    <input className={styles.cityinput} type="text" onChange={handleChange} name="company_city" value={input.company_city} />
+                                    <input className={styles.cityinput} type="text" onChange={handleChange} name="company_city" value={input.company_city} required />
                                 </div>
                                 <div className={styles.salmax}>
                                     <label className={styles.salmaxlabel}>
                                         Salaray Maximal
                                     </label>
-                                    <input className={styles.salmaxinput} type="number" onChange={handleChange} name="salary_max" value={input.salary_max} />
+                                    <input className={styles.salmaxinput} type="number" onChange={handleChange} name="salary_max" value={input.salary_max} required/>
                                 </div>
                                 <div className={styles.jobtenure}>
                                     <label className={styles.tenurelabel}>
                                         Job Tenure
                                     </label>
-                                    <select className={styles.tenureinput} name="job_tenure" id="tenure" onChange={handleChange} value={input.job_tenure}>
+                                    <select className={styles.tenureinput}  name="job_type" id="type" onChange={handleChange} value={input.job_type} required>
                                         <option value="WFH">WFH</option>
                                         <option value="On-Site">On-Site</option>
                                         <option value="WFA">WFA</option>
@@ -105,7 +104,7 @@ export default function FormJobVacancy() {
                                     <label className={styles.quallabel}>
                                         Job Qualification
                                     </label>
-                                    <textarea className={styles.qualinput} type="text" onChange={handleChange} name="job_qualification" value={input.job_qualification} ></textarea>
+                                    <textarea className={styles.qualinput} type="text" onChange={handleChange} name="job_qualification" value={input.job_qualification} required></textarea>
                                 </div>
                             </div>
                         </div>

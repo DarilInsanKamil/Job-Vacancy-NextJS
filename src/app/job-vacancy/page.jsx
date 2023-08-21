@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { Vacancy } from "./vacancy-map";
 import SectionResult from "./[slug]/sectionResult";
-import { SearchBar, FilterBar } from "../components";
+import { SearchBar, FilterBar, LoadingBox } from "../../components";
 import styles from "@/styles/job-vacancy.module.css";
 
 export default function JobVacancy() {
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -32,7 +32,9 @@ export default function JobVacancy() {
           <FilterBar closebtn={handleOpen} />
         </section>
         <div className={styles.listJobRow}>
-          {query && <SectionResult query={query} setQuery={setQuery} />}
+          <Suspense fallback={<LoadingBox />}>
+            {query && <SectionResult query={query} setQuery={setQuery} />}
+          </Suspense>
           {!query && <Vacancy />}
         </div>
       </section>

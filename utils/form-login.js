@@ -1,9 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
 export const handleChangeLogin = (event, input, setInput) => {
     let name = event.target.name;
     let value = event.target.value;
+
     setInput({
         ...input, [name]: value
     })

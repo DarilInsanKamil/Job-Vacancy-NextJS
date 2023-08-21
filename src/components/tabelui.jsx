@@ -11,6 +11,7 @@ export const TabelUi = ({
   handleDelete,
   id,
 }) => {
+
   const onDeleteClick = () => {
     handleDelete(id); // Call the handleDelete function with the 'id' value
   };

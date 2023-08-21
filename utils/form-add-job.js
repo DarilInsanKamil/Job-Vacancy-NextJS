@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { LoadingSuccess } from "./alert";
 
 export const handleChangeFromAddJob = (event, setInput) => {
     let name = event.target.name;
@@ -33,6 +34,7 @@ export const handleSubmitFromAddJob = async (event, input, router, setInput) => 
             salary_min: data.salary_min,
             salary_max: data.salary_max
         }))
+        {!data && alert('tunggu sebentar')}
         router.push('/job-vacancy')
     } catch (err) {
         console.error(JSON.stringify(err))

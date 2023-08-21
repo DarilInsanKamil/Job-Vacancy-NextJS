@@ -2,7 +2,6 @@
 import React from "react";
 import { Tabelcomp } from "./tabel";
 import styles from "@/styles/dashboard.module.css";
-import Link from "next/link";
 
 export default function Dashboard() {
   return (

@@ -12,16 +12,15 @@ export default function LoginPage() {
     email: '',
     password: ''
   })
-  const [isPassword, setIsPassword] = useState(true)
 
+  const [isPassword, setIsPassword] = useState(true)
+  const togglePassword = () => {
+    setIsPassword((prev) => !prev);
+  };
   
   const handleFormChange = (event) => handleChangeLogin(event, input, setInput)
   const handleFormSubmit = (event) => handleSubmitLogin(event, input, setError, router)
   
-  const togglePassword = () => {
-    setIsPassword((prev) => !prev);
-  };
-
   return (
     <div className={styles.form_login_layout}>
       <form onSubmit={handleFormSubmit} className={styles.form_card}>
@@ -33,6 +32,7 @@ export default function LoginPage() {
               <p>Incorrect username or password.</p>
             </section> : <></>
           }
+
           <label className={styles.label_field}>
             Email
           </label>
@@ -46,6 +46,7 @@ export default function LoginPage() {
               isPassword ? <img src="./icon/fluent_eye.svg" onClick={togglePassword} /> : <img src="./icon/fluent_eye-off.svg"/>
             }
           </section>
+          
           <button type="submit" className={styles.button_login}>Login</button>
           <p className={styles.terms}>By signing in you accept the <Link href="/" className={styles.create_acc}>Terms of Use and acknowledge the Privacy Policy and Cookie Policy. </Link></p>
         </div>

@@ -1,10 +1,7 @@
-import React from "react";
-import { LoadingBox } from "../components";
+import React, { useState } from "react";
+import { LoadingBox } from "../../components/loadingcomp/loadingbox";
 import { tandaPemisahTitik } from "@/utils/convert";
-import { TabelUi } from "../components";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
+import { TabelUi } from "../../components/tabelui";
 
 const getAllData = async () => {
   const API = process.env.MAIN_API_URL;
@@ -13,24 +10,10 @@ const getAllData = async () => {
 };
 
 export const Tabelcomp = async () => {
-  
-  const handleDelete = async (id) => {
-    const config = {
-      headers: { Authorization: `Bearer ${Cookies.get("token")}` },
-    };
-    if (id == undefined) {
-      return await getAllData();
-    } else {
-     axios.delete(
-        `https://dev-example.sanbercloud.com/api/job-vacancy/${id}`,
-        config
-      );
-      return datas.data.filter((x) => x.id !== id);
-    }
-  }
+  const [trigger, setTrigger] = useState(false)
 
-  let datas = await handleDelete();
-  let data = datas.data
+  let datas = await getAllData()
+  let data = datas.data;
   let loading = !datas;
   return (
     <tbody>
@@ -47,7 +30,7 @@ export const Tabelcomp = async () => {
             salary_max={tandaPemisahTitik(res.salary_max)}
             job_status={res.job_status == 1 ? "Tersedia" : "Tidak Tersedia"}
             id={res.id}
-            handleDelete={handleDelete}
+            // handleDelete={handleDelete}
           />
         ))}
     </tbody>

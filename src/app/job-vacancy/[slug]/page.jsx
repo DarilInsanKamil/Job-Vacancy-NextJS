@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
-import { LoadingBox } from "@/app/components";
+import { LoadingBox } from "../../../components/loadingcomp/loadingbox";
 
 
 const getData = async (params) => {
@@ -18,7 +18,7 @@ export default async function DetailJob({ params }) {
       <div>
         <Suspense fallback={<LoadingBox />}>
           <p>{data.title}</p>
-          <Image src={data.company_image_url} height={300} width={300} />
+          <Image src={data.company_image_url} alt={data.title} height={300} width={300} />
         </Suspense>
       </div>
     </div>

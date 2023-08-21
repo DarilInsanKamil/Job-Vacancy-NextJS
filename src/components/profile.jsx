@@ -1,25 +1,25 @@
-"use client";
-import styles from "@/styles/comp.module.css";
-import Cookies from "js-cookie";
+import React, { useState } from "react";
+import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import styles from "@/styles/comp.module.css";
+import Cookies from "js-cookie";
 import { Logout } from "@/utils/logout";
 
-export const ProfilePanel = ({ user, image }) => {
+export const ProfilePanel = ({user, image}) => {
   const [display, setDisplay] = useState(false);
+
   const router = useRouter();
   const handleLogout = () => Logout(router);
 
-  const handleLogin = () => {
-    router.push("./login");
-  };
   const handlePassword = () => {
     router.push("/change-password");
   };
+
   const handleDashboard = () => {
     router.push("/dashboard");
   };
+
   const handleDisplay = () => {
     if (Cookies.get("user") == null) {
       router.push("./login");
@@ -28,6 +28,7 @@ export const ProfilePanel = ({ user, image }) => {
       setDisplay(!display);
     }
   };
+ 
   return (
     <>
       <div className={styles.profileContainer} onClick={handleDisplay}>
@@ -50,19 +51,34 @@ export const ProfilePanel = ({ user, image }) => {
       <div className={display ? styles.navFloat : styles.navVisible}>
         <section className={styles.password} onClick={handleDashboard}>
           <span>
-            <Image width={20} height={20} src="./icon/dash.svg" alt="dash-icon" />
+            <Image
+              width={20}
+              height={20}
+              src="./icon/dash.svg"
+              alt="dash-icon"
+            />
           </span>
           Dashboard
         </section>
         <section onClick={handlePassword}>
           <span>
-            <Image width={20} height={20} src="./icon/seting.svg" alt="setting-icon" />
+            <Image
+              width={20}
+              height={20}
+              src="./icon/seting.svg"
+              alt="setting-icon"
+            />
           </span>
           Change Password
         </section>
         <section className={styles.signOut} onClick={handleLogout}>
           <span>
-            <Image width={20} height={20} src="./icon/signout.svg" alt="signout-icon" />
+            <Image
+              width={20}
+              height={20}
+              src="./icon/signout.svg"
+              alt="signout-icon"
+            />
           </span>
           Sign Out
         </section>

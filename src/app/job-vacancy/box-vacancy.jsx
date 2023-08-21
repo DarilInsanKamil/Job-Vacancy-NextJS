@@ -65,9 +65,9 @@ export const BoxVacancy = ({
               <p>{tenure}</p>
             </div>
           </div>
-          <button className={styles.btnlearn}>
-            <Link href={navigation}>Learn more</Link>
-          </button>
+          <Link href={navigation} className={styles.btnlearn} >
+            Learn More
+          </Link>
         </section>
       </div>
     </div>

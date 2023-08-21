@@ -1,9 +1,9 @@
-import { LoadingBox } from "./components";
-
+"use client"
 export default function Home() {
+
   return (
     <main>
-      <LoadingBox/>
+      <p>hello</p>
     </main>
   )
 }
